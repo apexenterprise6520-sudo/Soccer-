@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Soccer – Play every week, near you</title>
-<meta name="description" content="Join a local soccer league, drop-in game or youth academy. Pick a night and show up.">
+<title>Soccer Academy – Register today</title>
+<meta name="description" content="Register for the soccer academy. Pick your position and join a team.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Familjen+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --blue:#1d4ed8; --black:#05070f; --chalk:#f4f7ff; --paint:#38bdf8; --ink:#05070f; --mist:#c7d6f5; --muted:#3b4a6b; --wa:#25d366;
+  --blue:#1d4ed8; --black:#05070f; --chalk:#f4f7ff; --paint:#38bdf8; --ink:#05070f; --mist:#c7d6f5; --muted:#3b4a6b; --wa:#25d366; --err:#ff8080;
   --display:'Bricolage Grotesque','Arial Black',Impact,sans-serif;
   --body:'Familjen Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
@@ -21,7 +21,7 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--paint);outline-offset:3px}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
-/* Hero: blue and black pitch stripes with chalk markings */
+/* Hero */
 .hero{position:relative;overflow:hidden;color:var(--chalk);min-height:92vh;display:flex;flex-direction:column;
   background:repeating-linear-gradient(90deg,var(--blue) 0 90px,var(--black) 90px 180px)}
 .hero::before{content:"";position:absolute;left:50%;top:50%;width:min(70vw,520px);aspect-ratio:1;border:4px solid rgba(244,247,255,.35);border-radius:50%;transform:translate(-50%,-50%)}
@@ -69,21 +69,23 @@ th{font-family:var(--display);font-weight:700;background:var(--black);color:var(
 td:first-child{font-weight:600}
 .spots{font-weight:600;color:var(--blue)}
 
-/* Quote + signup */
-.quote{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.15;letter-spacing:-.02em;max-width:22ch}
-.quote small{display:block;font-family:var(--body);font-weight:400;font-size:1rem;margin-top:14px;color:var(--muted);letter-spacing:0}
+/* Registration */
 .signup{background:var(--black);color:var(--chalk)}
 .signup .lead{color:var(--mist)}
-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:760px}
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;max-width:760px}
 label{display:flex;flex-direction:column;gap:6px;font-weight:600}
-input,select{font:inherit;padding:13px 14px;border-radius:6px;border:2px solid transparent;background:var(--chalk);color:var(--ink)}
-form button{grid-column:1/-1;font:inherit;font-weight:600;cursor:pointer;padding:16px;border-radius:99px;border:0;background:var(--paint);color:var(--ink)}
-form button:hover{transform:translateY(-2px)}
-#msg{grid-column:1/-1;min-height:1.5em;font-weight:600;color:var(--paint)}
+input,select{font:inherit;padding:14px;border-radius:6px;border:2px solid transparent;background:var(--chalk);color:var(--ink)}
+input:focus,select:focus{border-color:var(--paint);outline:none}
+form button{grid-column:1/-1;font:inherit;font-weight:600;cursor:pointer;padding:16px;border-radius:99px;border:0;background:var(--paint);color:var(--ink);transition:transform .15s}
+form button:hover:not(:disabled){transform:translateY(-2px)}
+form button:disabled{opacity:.6;cursor:wait}
+#msg{grid-column:1/-1;min-height:1.6em;font-weight:600;font-size:1.15rem}
+#msg.ok{color:var(--paint)}
+#msg.error{color:var(--err)}
 .or{margin-top:28px}
 footer{padding:28px 0;font-size:.95rem;background:#000;color:var(--mist)}
 
-/* Floating WhatsApp button */
+/* Floating WhatsApp */
 .wa-float{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;align-items:center;gap:10px;
   background:var(--wa);color:#073b1b;text-decoration:none;font-weight:600;padding:14px 20px;border-radius:99px;
   box-shadow:0 8px 20px rgba(0,0,0,.35);transition:transform .15s}
@@ -104,17 +106,17 @@ footer{padding:28px 0;font-size:.95rem;background:#000;color:var(--mist)}
 <header class="hero">
   <div class="wrap" style="width:100%">
     <nav>
-      <strong>Soccer</strong>
-      <a class="btn-small" href="#join">Join a team</a>
+      <strong>Soccer Academy</strong>
+      <a class="btn-small" href="#join">Register</a>
     </nav>
   </div>
   <div class="wrap hero-body">
     <h1>Soccer</h1>
-    <p>Pick a night. Show up. Play a real game with people near you.</p>
+    <p>Pick your position. Join the academy. Play every week.</p>
     <div class="cta-row">
-      <a class="btn" href="#join">Reserve your spot</a>
+      <a class="btn" href="#join">Register now</a>
       <a class="btn ghost" href="#schedule">See the schedule</a>
-      <a class="btn wa" href="https://wa.me/2347065205154?text=Hi%2C%20I%27d%20like%20to%20join%20a%20soccer%20game." target="_blank" rel="noopener">
+      <a class="btn wa" href="https://wa.me/2347065205154?text=Hi%2C%20I%27d%20like%20to%20join%20the%20soccer%20academy." target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
         Chat on WhatsApp
       </a>
@@ -126,7 +128,7 @@ footer{padding:28px 0;font-size:.95rem;background:#000;color:var(--mist)}
 <section id="formats">
   <div class="wrap">
     <h2>Three ways to play</h2>
-    <p class="lead">Whether you haven't kicked a ball since school or you never stopped, there's a game that fits.</p>
+    <p class="lead">Whether you haven’t kicked a ball since school or you never stopped, there’s a game that fits.</p>
     <div class="formats">
       <article class="format">
         <span class="tag">Ages 6–14</span>
@@ -136,7 +138,7 @@ footer{padding:28px 0;font-size:.95rem;background:#000;color:var(--mist)}
       <article class="format">
         <span class="tag">Ages 16+</span>
         <h3>Weekly league</h3>
-        <p>Seven-a-side teams, ten-week seasons, referees and standings. Sign up solo and we'll place you on a team.</p>
+        <p>Seven-a-side teams, ten-week seasons, referees and standings. Register solo and we’ll place you on a team.</p>
       </article>
       <article class="format">
         <span class="tag">All levels</span>
@@ -149,7 +151,7 @@ footer{padding:28px 0;font-size:.95rem;background:#000;color:var(--mist)}
 
 <section class="sched" id="schedule">
   <div class="wrap">
-    <h2>This week's games</h2>
+    <h2>This week’s games</h2>
     <p class="lead">Every session runs rain or shine on floodlit turf.</p>
     <div class="table-wrap">
       <table>
@@ -165,57 +167,104 @@ footer{padding:28px 0;font-size:.95rem;background:#000;color:var(--mist)}
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <blockquote class="quote">I came for the exercise and stayed for the Wednesday team.
-      <small>Dana, league player since 2024</small>
-    </blockquote>
-  </div>
-</section>
-
 <section class="signup" id="join">
   <div class="wrap">
-    <h2>Reserve your spot</h2>
-    <p class="lead">Tell us when you want to play. We'll confirm by email within a day, or message us on WhatsApp for a faster reply.</p>
-    <form id="join-form">
-      <label>Name<input name="name" required autocomplete="name"></label>
-      <label>Email<input type="email" name="email" required autocomplete="email"></label>
-      <label>Format
-        <select name="format">
-          <option>Drop-in game</option>
-          <option>Weekly league</option>
-          <option>Youth academy</option>
+    <h2>Register as a player</h2>
+    <p class="lead">Fill in your details and pick your position. We’ll contact you with your first session.</p>
+    <form id="reg-form" novalidate>
+      <label>Full name
+        <input type="text" name="full_name" id="full_name" required autocomplete="name" placeholder="e.g. Chinedu Okafor">
+      </label>
+      <label>Phone
+        <input type="tel" name="phone" id="phone" required autocomplete="tel" placeholder="e.g. +234 700 000 0000">
+      </label>
+      <label>Age
+        <input type="number" name="age" id="age" required min="5" max="60" inputmode="numeric" placeholder="e.g. 14">
+      </label>
+      <label>Position
+        <select name="position" id="position" required>
+          <option value="" disabled selected>Choose a position</option>
+          <option>Goalkeeper</option>
+          <option>Defender</option>
+          <option>Midfielder</option>
+          <option>Forward</option>
         </select>
       </label>
-      <button type="submit">Reserve my spot</button>
-      <p id="msg" role="status"></p>
+      <button type="submit" id="submit-btn">Register</button>
+      <p id="msg" role="status" aria-live="polite"></p>
     </form>
     <div class="or">
-      <a class="btn wa" href="https://wa.me/2347065205154?text=Hi%2C%20I%27d%20like%20to%20join%20a%20soccer%20game." target="_blank" rel="noopener">
+      <a class="btn wa" href="https://wa.me/2347065205154?text=Hi%2C%20I%27d%20like%20to%20join%20the%20soccer%20academy." target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-        Chat on WhatsApp
+        Prefer WhatsApp? Chat with us
       </a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">© 2026 Soccer. Boots optional, shin guards required.</div>
+  <div class="wrap">© 2026 Soccer Academy. Boots optional, shin guards required.</div>
 </footer>
 
-<!-- Floating WhatsApp button -->
-<a class="wa-float" href="https://wa.me/2347065205154?text=Hi%2C%20I%27d%20like%20to%20join%20a%20soccer%20game." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+<a class="wa-float" href="https://wa.me/2347065205154?text=Hi%2C%20I%27d%20like%20to%20join%20the%20soccer%20academy." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
   <span>Chat with us</span>
 </a>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-document.getElementById('join-form').addEventListener('submit',function(e){
-  e.preventDefault();
-  var n=this.name.value.trim();
-  document.getElementById('msg').textContent='You\u2019re on the list, '+n+'. Check your email to confirm.';
-  this.reset();
-});
+  // Supabase connection (publishable key is safe to use in the browser)
+  var SUPABASE_URL = 'https://xqnlnpknchicurpaizpq.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_mNYpYJ9yiiHZXKCaCQ6-Aw_9bto2YVv';
+  var db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  var form = document.getElementById('reg-form');
+  var btn = document.getElementById('submit-btn');
+  var msg = document.getElementById('msg');
+
+  function show(text, type) {
+    msg.textContent = text;
+    msg.className = type;
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    var fullName = document.getElementById('full_name').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var age = parseInt(document.getElementById('age').value, 10);
+    var position = document.getElementById('position').value;
+
+    if (!fullName || !phone || !position || isNaN(age)) {
+      show('Please fill in all four fields.', 'error');
+      return;
+    }
+    if (age < 5 || age > 60) {
+      show('Age must be between 5 and 60.', 'error');
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Registering…';
+    show('', '');
+
+    try {
+      var result = await db.from('registrations').insert([
+        { full_name: fullName, phone: phone, age: age, position: position }
+      ]);
+
+      if (result.error) throw result.error;
+
+      show('Player Registered!', 'ok');
+      form.reset();
+    } catch (err) {
+      console.error('Supabase error:', err);
+      show('Could not register. ' + (err.message || 'Please try again.'), 'error');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Register';
+    }
+  });
 </script>
 </body>
 </html>
