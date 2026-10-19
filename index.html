@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Soccer – Play every week, near you</title>
+<meta name="description" content="Join a local soccer league, drop-in game or youth academy. Pick a night and show up.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Familjen+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --grass:#1f6b3a; --grass-dark:#15502b; --chalk:#f7f6f0; --paint:#ffd23f; --ink:#10261a; --clay:#c9d8c5;
+  --display:'Bricolage Grotesque','Arial Black',Impact,sans-serif;
+  --body:'Familjen Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);color:var(--ink);background:var(--chalk);line-height:1.6;font-size:1.0625rem}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--paint);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* Hero: mown pitch stripes with chalk markings */
+.hero{position:relative;overflow:hidden;color:var(--chalk);min-height:92vh;display:flex;flex-direction:column;
+  background:repeating-linear-gradient(90deg,var(--grass) 0 90px,var(--grass-dark) 90px 180px)}
+.hero::before{content:"";position:absolute;left:50%;top:50%;width:min(70vw,520px);aspect-ratio:1;border:4px solid rgba(247,246,240,.35);border-radius:50%;transform:translate(-50%,-50%)}
+.hero::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;background:rgba(247,246,240,.35);transform:translateX(-50%)}
+nav{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+nav strong{font-family:var(--display);font-weight:800;font-size:1.4rem;letter-spacing:-.02em}
+nav a.btn-small{text-decoration:none;font-weight:600;border:2px solid var(--chalk);padding:8px 18px;border-radius:99px}
+nav a.btn-small:hover{background:var(--chalk);color:var(--grass-dark)}
+.hero-body{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding-bottom:70px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(5rem,26vw,17rem);line-height:.82;letter-spacing:-.05em}
+.hero p{max-width:30ch;font-size:1.35rem;margin-top:28px;background:var(--grass-dark);padding:4px 10px;display:inline-block}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-block;text-decoration:none;font-weight:600;padding:15px 30px;border-radius:99px;background:var(--paint);color:var(--ink);border:2px solid var(--paint);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:var(--chalk);border-color:var(--chalk)}
+.ball{position:absolute;z-index:3;bottom:28px;left:-80px;width:56px;height:56px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff 0 55%,#d9d9d2 100%);box-shadow:0 8px 12px rgba(0,0,0,.3);
+  animation:roll 5s cubic-bezier(.3,.6,.3,1) .4s forwards}
+.ball::after{content:"";position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,var(--ink) 0 22%,transparent 23%),
+  radial-gradient(circle at 15% 50%,var(--ink) 0 9%,transparent 10%),radial-gradient(circle at 85% 50%,var(--ink) 0 9%,transparent 10%),
+  radial-gradient(circle at 50% 12%,var(--ink) 0 9%,transparent 10%),radial-gradient(circle at 50% 88%,var(--ink) 0 9%,transparent 10%)}
+@keyframes roll{to{left:calc(100% - 110px);transform:rotate(1080deg)}}
+
+section{padding:88px 0}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.03em;line-height:1.05;margin-bottom:14px}
+.lead{max-width:52ch;margin-bottom:44px;color:#3a5244}
+
+/* Formats: three sizes of game, differentiated by pitch size */
+.formats{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.format{border:3px solid var(--grass);border-radius:6px;padding:26px;background:#fff}
+.format:nth-child(2){border-radius:28px}
+.format:nth-child(3){border-radius:6px 6px 6px 48px}
+.format h3{font-family:var(--display);font-size:1.7rem;letter-spacing:-.02em;line-height:1.1;margin-bottom:8px}
+.format .tag{display:inline-block;background:var(--paint);font-weight:600;font-size:.9rem;padding:2px 12px;border-radius:99px;margin-bottom:14px}
+
+/* Schedule */
+.sched{background:var(--clay)}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:520px;background:var(--chalk)}
+th,td{text-align:left;padding:16px 18px;border-bottom:2px solid var(--clay)}
+th{font-family:var(--display);font-weight:700;background:var(--grass);color:var(--chalk)}
+td:first-child{font-weight:600}
+.spots{font-weight:600;color:var(--grass-dark)}
+
+/* Quote + signup */
+.quote{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.15;letter-spacing:-.02em;max-width:22ch}
+.quote small{display:block;font-family:var(--body);font-weight:400;font-size:1rem;margin-top:14px;color:#3a5244;letter-spacing:0}
+.signup{background:var(--grass-dark);color:var(--chalk)}
+.signup .lead{color:var(--clay)}
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:760px}
+label{display:flex;flex-direction:column;gap:6px;font-weight:600}
+input,select{font:inherit;padding:13px 14px;border-radius:6px;border:2px solid transparent;background:var(--chalk);color:var(--ink)}
+form button{grid-column:1/-1;font:inherit;font-weight:600;cursor:pointer;padding:16px;border-radius:99px;border:0;background:var(--paint);color:var(--ink)}
+form button:hover{transform:translateY(-2px)}
+#msg{grid-column:1/-1;min-height:1.5em;font-weight:600;color:var(--paint)}
+footer{padding:28px 0;font-size:.95rem;background:var(--ink);color:var(--clay)}
+
+@media (max-width:600px){.hero::after{display:none}section{padding:64px 0}}
+@media (prefers-reduced-motion:reduce){.ball{animation:none;left:calc(100% - 110px)}.btn,form button{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap" style="width:100%">
+    <nav>
+      <strong>Soccer</strong>
+      <a class="btn-small" href="#join">Join a team</a>
+    </nav>
+  </div>
+  <div class="wrap hero-body">
+    <h1>Soccer</h1>
+    <p>Pick a night. Show up. Play a real game with people near you.</p>
+    <div class="cta-row">
+      <a class="btn" href="#join">Reserve your spot</a>
+      <a class="btn ghost" href="#schedule">See the schedule</a>
+    </div>
+  </div>
+  <div class="ball" aria-hidden="true"></div>
+</header>
+
+<section id="formats">
+  <div class="wrap">
+    <h2>Three ways to play</h2>
+    <p class="lead">Whether you haven't kicked a ball since school or you never stopped, there's a game that fits.</p>
+    <div class="formats">
+      <article class="format">
+        <span class="tag">Ages 6–14</span>
+        <h3>Youth academy</h3>
+        <p>Small groups, certified coaches, and plenty of touches on the ball. Skills first, scores second.</p>
+      </article>
+      <article class="format">
+        <span class="tag">Ages 16+</span>
+        <h3>Weekly league</h3>
+        <p>Seven-a-side teams, ten-week seasons, referees and standings. Sign up solo and we'll place you on a team.</p>
+      </article>
+      <article class="format">
+        <span class="tag">All levels</span>
+        <h3>Drop-in game</h3>
+        <p>No team, no commitment. Arrive ten minutes early, get sorted into even sides, and play.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sched" id="schedule">
+  <div class="wrap">
+    <h2>This week's games</h2>
+    <p class="lead">Every session runs rain or shine on floodlit turf.</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Day</th><th>Time</th><th>Format</th><th>Spots left</th></tr></thead>
+        <tbody>
+          <tr><td>Tuesday</td><td>6:30 pm</td><td>Drop-in game</td><td class="spots">6</td></tr>
+          <tr><td>Wednesday</td><td>7:30 pm</td><td>Weekly league</td><td class="spots">3</td></tr>
+          <tr><td>Saturday</td><td>9:00 am</td><td>Youth academy</td><td class="spots">8</td></tr>
+          <tr><td>Sunday</td><td>5:00 pm</td><td>Drop-in game</td><td class="spots">11</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <blockquote class="quote">I came for the exercise and stayed for the Wednesday team.
+      <small>Dana, league player since 2024</small>
+    </blockquote>
+  </div>
+</section>
+
+<section class="signup" id="join">
+  <div class="wrap">
+    <h2>Reserve your spot</h2>
+    <p class="lead">Tell us when you want to play. We'll confirm by email within a day.</p>
+    <form id="join-form">
+      <label>Name<input name="name" required autocomplete="name"></label>
+      <label>Email<input type="email" name="email" required autocomplete="email"></label>
+      <label>Format
+        <select name="format">
+          <option>Drop-in game</option>
+          <option>Weekly league</option>
+          <option>Youth academy</option>
+        </select>
+      </label>
+      <button type="submit">Reserve my spot</button>
+      <p id="msg" role="status"></p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 Soccer. Boots optional, shin guards required.</div>
+</footer>
+
+<script>
+document.getElementById('join-form').addEventListener('submit',function(e){
+  e.preventDefault();
+  var n=this.name.value.trim();
+  document.getElementById('msg').textContent='You\u2019re on the list, '+n+'. Check your email to confirm.';
+  this.reset();
+});
+</script>
+</body>
+</html>
