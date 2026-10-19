@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Familjen+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --grass:#1f6b3a; --grass-dark:#15502b; --chalk:#f7f6f0; --paint:#ffd23f; --ink:#10261a; --clay:#c9d8c5;
+  --blue:#1d4ed8; --black:#05070f; --chalk:#f4f7ff; --paint:#38bdf8; --ink:#05070f; --mist:#c7d6f5; --muted:#3b4a6b; --wa:#25d366;
   --display:'Bricolage Grotesque','Arial Black',Impact,sans-serif;
   --body:'Familjen Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
 }
@@ -21,24 +21,26 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--paint);outline-offset:3px}
 .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
 
-/* Hero: mown pitch stripes with chalk markings */
+/* Hero: blue and black pitch stripes with chalk markings */
 .hero{position:relative;overflow:hidden;color:var(--chalk);min-height:92vh;display:flex;flex-direction:column;
-  background:repeating-linear-gradient(90deg,var(--grass) 0 90px,var(--grass-dark) 90px 180px)}
-.hero::before{content:"";position:absolute;left:50%;top:50%;width:min(70vw,520px);aspect-ratio:1;border:4px solid rgba(247,246,240,.35);border-radius:50%;transform:translate(-50%,-50%)}
-.hero::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;background:rgba(247,246,240,.35);transform:translateX(-50%)}
+  background:repeating-linear-gradient(90deg,var(--blue) 0 90px,var(--black) 90px 180px)}
+.hero::before{content:"";position:absolute;left:50%;top:50%;width:min(70vw,520px);aspect-ratio:1;border:4px solid rgba(244,247,255,.35);border-radius:50%;transform:translate(-50%,-50%)}
+.hero::after{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;background:rgba(244,247,255,.35);transform:translateX(-50%)}
 nav{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:22px 0}
 nav strong{font-family:var(--display);font-weight:800;font-size:1.4rem;letter-spacing:-.02em}
 nav a.btn-small{text-decoration:none;font-weight:600;border:2px solid var(--chalk);padding:8px 18px;border-radius:99px}
-nav a.btn-small:hover{background:var(--chalk);color:var(--grass-dark)}
+nav a.btn-small:hover{background:var(--chalk);color:var(--black)}
 .hero-body{position:relative;z-index:2;flex:1;display:flex;flex-direction:column;justify-content:center;padding-bottom:70px}
 h1{font-family:var(--display);font-weight:800;font-size:clamp(5rem,26vw,17rem);line-height:.82;letter-spacing:-.05em}
-.hero p{max-width:30ch;font-size:1.35rem;margin-top:28px;background:var(--grass-dark);padding:4px 10px;display:inline-block}
+.hero p{max-width:30ch;font-size:1.35rem;margin-top:28px;background:var(--black);padding:4px 10px;display:inline-block}
 .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
-.btn{display:inline-block;text-decoration:none;font-weight:600;padding:15px 30px;border-radius:99px;background:var(--paint);color:var(--ink);border:2px solid var(--paint);transition:transform .15s}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:600;padding:15px 30px;border-radius:99px;background:var(--paint);color:var(--ink);border:2px solid var(--paint);transition:transform .15s}
 .btn:hover{transform:translateY(-2px)}
 .btn.ghost{background:transparent;color:var(--chalk);border-color:var(--chalk)}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:#073b1b}
+.btn svg{width:22px;height:22px;fill:currentColor;flex:none}
 .ball{position:absolute;z-index:3;bottom:28px;left:-80px;width:56px;height:56px;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,#fff 0 55%,#d9d9d2 100%);box-shadow:0 8px 12px rgba(0,0,0,.3);
+  background:radial-gradient(circle at 35% 30%,#fff 0 55%,#d9dde8 100%);box-shadow:0 8px 12px rgba(0,0,0,.4);
   animation:roll 5s cubic-bezier(.3,.6,.3,1) .4s forwards}
 .ball::after{content:"";position:absolute;inset:0;border-radius:50%;
   background:radial-gradient(circle at 50% 50%,var(--ink) 0 22%,transparent 23%),
@@ -48,40 +50,53 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(5rem,26vw,17rem);l
 
 section{padding:88px 0}
 h2{font-family:var(--display);font-weight:800;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:-.03em;line-height:1.05;margin-bottom:14px}
-.lead{max-width:52ch;margin-bottom:44px;color:#3a5244}
+.lead{max-width:52ch;margin-bottom:44px;color:var(--muted)}
 
-/* Formats: three sizes of game, differentiated by pitch size */
+/* Formats */
 .formats{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.format{border:3px solid var(--grass);border-radius:6px;padding:26px;background:#fff}
+.format{border:3px solid var(--blue);border-radius:6px;padding:26px;background:#fff}
 .format:nth-child(2){border-radius:28px}
 .format:nth-child(3){border-radius:6px 6px 6px 48px}
 .format h3{font-family:var(--display);font-size:1.7rem;letter-spacing:-.02em;line-height:1.1;margin-bottom:8px}
 .format .tag{display:inline-block;background:var(--paint);font-weight:600;font-size:.9rem;padding:2px 12px;border-radius:99px;margin-bottom:14px}
 
 /* Schedule */
-.sched{background:var(--clay)}
+.sched{background:var(--mist)}
 .table-wrap{overflow-x:auto}
 table{width:100%;border-collapse:collapse;min-width:520px;background:var(--chalk)}
-th,td{text-align:left;padding:16px 18px;border-bottom:2px solid var(--clay)}
-th{font-family:var(--display);font-weight:700;background:var(--grass);color:var(--chalk)}
+th,td{text-align:left;padding:16px 18px;border-bottom:2px solid var(--mist)}
+th{font-family:var(--display);font-weight:700;background:var(--black);color:var(--chalk)}
 td:first-child{font-weight:600}
-.spots{font-weight:600;color:var(--grass-dark)}
+.spots{font-weight:600;color:var(--blue)}
 
 /* Quote + signup */
 .quote{font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,4vw,2.6rem);line-height:1.15;letter-spacing:-.02em;max-width:22ch}
-.quote small{display:block;font-family:var(--body);font-weight:400;font-size:1rem;margin-top:14px;color:#3a5244;letter-spacing:0}
-.signup{background:var(--grass-dark);color:var(--chalk)}
-.signup .lead{color:var(--clay)}
+.quote small{display:block;font-family:var(--body);font-weight:400;font-size:1rem;margin-top:14px;color:var(--muted);letter-spacing:0}
+.signup{background:var(--black);color:var(--chalk)}
+.signup .lead{color:var(--mist)}
 form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:760px}
 label{display:flex;flex-direction:column;gap:6px;font-weight:600}
 input,select{font:inherit;padding:13px 14px;border-radius:6px;border:2px solid transparent;background:var(--chalk);color:var(--ink)}
 form button{grid-column:1/-1;font:inherit;font-weight:600;cursor:pointer;padding:16px;border-radius:99px;border:0;background:var(--paint);color:var(--ink)}
 form button:hover{transform:translateY(-2px)}
 #msg{grid-column:1/-1;min-height:1.5em;font-weight:600;color:var(--paint)}
-footer{padding:28px 0;font-size:.95rem;background:var(--ink);color:var(--clay)}
+.or{margin-top:28px}
+footer{padding:28px 0;font-size:.95rem;background:#000;color:var(--mist)}
 
-@media (max-width:600px){.hero::after{display:none}section{padding:64px 0}}
-@media (prefers-reduced-motion:reduce){.ball{animation:none;left:calc(100% - 110px)}.btn,form button{transition:none}}
+/* Floating WhatsApp button */
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;align-items:center;gap:10px;
+  background:var(--wa);color:#073b1b;text-decoration:none;font-weight:600;padding:14px 20px;border-radius:99px;
+  box-shadow:0 8px 20px rgba(0,0,0,.35);transition:transform .15s}
+.wa-float:hover{transform:translateY(-3px)}
+.wa-float svg{width:28px;height:28px;fill:currentColor}
+
+@media (max-width:600px){
+  .hero::after{display:none}
+  section{padding:64px 0}
+  .wa-float span{display:none}
+  .wa-float{padding:14px}
+}
+@media (prefers-reduced-motion:reduce){.ball{animation:none;left:calc(100% - 110px)}.btn,form button,.wa-float{transition:none}}
 </style>
 </head>
 <body>
@@ -99,6 +114,10 @@ footer{padding:28px 0;font-size:.95rem;background:var(--ink);color:var(--clay)}
     <div class="cta-row">
       <a class="btn" href="#join">Reserve your spot</a>
       <a class="btn ghost" href="#schedule">See the schedule</a>
+      <a class="btn wa" href="https://wa.me/2347065205154?text=Hi%2C%20I%27d%20like%20to%20join%20a%20soccer%20game." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Chat on WhatsApp
+      </a>
     </div>
   </div>
   <div class="ball" aria-hidden="true"></div>
@@ -157,7 +176,7 @@ footer{padding:28px 0;font-size:.95rem;background:var(--ink);color:var(--clay)}
 <section class="signup" id="join">
   <div class="wrap">
     <h2>Reserve your spot</h2>
-    <p class="lead">Tell us when you want to play. We'll confirm by email within a day.</p>
+    <p class="lead">Tell us when you want to play. We'll confirm by email within a day, or message us on WhatsApp for a faster reply.</p>
     <form id="join-form">
       <label>Name<input name="name" required autocomplete="name"></label>
       <label>Email<input type="email" name="email" required autocomplete="email"></label>
@@ -171,12 +190,24 @@ footer{padding:28px 0;font-size:.95rem;background:var(--ink);color:var(--clay)}
       <button type="submit">Reserve my spot</button>
       <p id="msg" role="status"></p>
     </form>
+    <div class="or">
+      <a class="btn wa" href="https://wa.me/2347065205154?text=Hi%2C%20I%27d%20like%20to%20join%20a%20soccer%20game." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Chat on WhatsApp
+      </a>
+    </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">© 2026 Soccer. Boots optional, shin guards required.</div>
 </footer>
+
+<!-- Floating WhatsApp button -->
+<a class="wa-float" href="https://wa.me/2347065205154?text=Hi%2C%20I%27d%20like%20to%20join%20a%20soccer%20game." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  <span>Chat with us</span>
+</a>
 
 <script>
 document.getElementById('join-form').addEventListener('submit',function(e){
